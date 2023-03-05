@@ -1,5 +1,7 @@
 import { openDB } from 'idb';
 
+
+// Initialize jate database using IndexedDb
 const initdb = async () =>
   openDB('jate', 1, {
     upgrade(db) {
@@ -13,9 +15,38 @@ const initdb = async () =>
   });
 
 // TODO: Add logic to a method that accepts some content and adds it to the database
-export const putDb = async (content) => console.error('putDb not implemented');
+// Exporting function that allows user to post to jate database
+export const putDb = async (content) => {
+  const jateDb = await openDB('jate', 1);
+
+  const tx = jateDb.transation('jate', 'readwrite');
+
+  const store = tx.objectStore('jate');
+
+  const request = store.add(content);
+
+  const result = await request;
+
+  console.log('Data saved to the database', result);
+
+};
 
 // TODO: Add logic for a method that gets all the content from the database
-export const getDb = async () => console.error('getDb not implemented');
+// Exporting function that allows user to get all data from jate database
+export const getDb = async () => {
+  const jateDb = await openDB('jate', 1);
+
+  const tx = jateDb.transation('jate', 'readonly');
+
+  const store = tx.objectStore('jate');
+
+  const request = store.getAll();
+
+  const result = await request;
+
+  console.log('result.value', result);
+
+  return result;
+};
 
 initdb();
