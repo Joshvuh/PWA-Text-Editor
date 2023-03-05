@@ -20,6 +20,8 @@
   ## Usage
   
   After the dependencies are installed, run `npm run start`. From there you should be able to access local host on port 3000 to see the app.
+  
+  Deployed application: https://pacific-shelf-45096.herokuapp.com/
 
   ## License
   
