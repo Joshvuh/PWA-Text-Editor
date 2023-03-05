@@ -1,4 +1,4 @@
-# Text Editor Starter Code
+# PWA Text Editor
 ## Table of Contents
   
   - [Description](#description)
